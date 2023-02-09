@@ -1,18 +1,18 @@
 #include "math.h"
 #include <avr/sleep.h>
 
-const double iREF = 1.067; // referenten vnatreshen napon od 1.1 (meram 1.067v za poprecizna vrednost da mi dade)
+const double iREF = 1.067; // reference inside voltage of 1.1 volts  (referenten vnatreshen napon od 1.1 (meram 1.067v za poprecizna vrednost da mi dade))
 //double REF = 1.070;
-const float offset = 0.53; // 0.53 za 1.1 REF voltage,2.5 za 5v REF
-const float odnos = 37.10; //odnos na naponskiot transformator 233/6.3(otprilika ,jas merev i taka presmetav)
-int a1 = A0;
-int a2 = A1;
+const float offset = 0.53; // offset (divide the referent voltage with 2)=0.53  ( 0.53 za 1.1 REF voltage,2.5 za 5v REF)
+const float odnos = 37.10; // ratio of the voltage transformer (odnos na naponskiot transformator 233/6.3(otprilika ,jas merev i taka presmetav))
+int a1 = A0; // channel A0 for current transformer
+int a2 = A1; // channel A1 for voltage transformer
 //const double vRMS = 230.0;
 
-const double nNavivki = 500; // navivki na strujno trafo
-const double rOtpornik = 55; //otpor da nema visoki naponi na strujno trafo
+const double nNavivki = 500; // windings of the current transformer (navivki na strujno trafo)
+const double rOtpornik = 55; // resistor conected to the ends of the current transformer (otpor da nema visoki naponi na strujno trafo)
 
-const unsigned int nSemplovi = 600;//semplovi za merenje na naponot i strujata
+const unsigned int nSemplovi = 600;// number of samples for sampling values of the current and voltage (semplovi za merenje na naponot i strujata)
 unsigned long msec = 0;
 float time = 0.0;
 int sample = 0;
